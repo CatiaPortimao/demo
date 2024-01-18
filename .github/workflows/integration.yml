@@ -1,12 +1,7 @@
 name: Build Next.js web application
 
-on:
-    push:
-      branches:
-        - main
-    pull_request:
-      branches:
-        - main
+on: push
+
 jobs:
     build-project:
         name: Build project
@@ -46,13 +41,7 @@ jobs:
           uses: thedoctor0/zip-release@0.7.5
           with:
               filename: site.zip
-        - name: Create GitHub release
-          uses: actions/create-release@v1
-          env:
-            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          with:
-              tag_name: ${{github.ref}}
-              release_name: Release ${{github.ref}}
+        
 
 
 
